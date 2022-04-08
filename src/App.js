@@ -4,7 +4,7 @@ import Form from './Components/Form';
 import FormInput from './Components/FormInput';
 
 function App() {
-  const [user,setUser] = useState({
+  const [newUser,setNewUser] = useState({
     userName:"",
     Email:"",
     Password:"",
@@ -45,7 +45,7 @@ function App() {
       type:"password",
       placeholder:"Password",
       errorMessage:"Password should be 8-20 characters and include at lest 1 latter, 1 number, 1 special character!",
-      pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}`,
+      pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}`, // regex for password validation.
       label:"Password",
       required:false
     },
@@ -55,6 +55,7 @@ function App() {
       type:"password",
       placeholder:"Confirm Password",
       errorMessage:"Passwords don't match",
+      pattern:newUser.Password,
       label:"Confirm Password",
       required:false
     }
@@ -71,7 +72,7 @@ function App() {
   }
 
   const onChange =(e)=>{
-    setUser({...user,[e.target.name]:e.target.value})
+    setNewUser({...newUser,[e.target.name]:e.target.value})
   }
 
   console.log(user)
