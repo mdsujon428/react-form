@@ -75,7 +75,7 @@ function App() {
     setNewUser({...newUser,[e.target.name]:e.target.value})
   }
 
-  console.log(user)
+  console.log(newUser)
 
   return (
     <div className="App">
@@ -84,7 +84,7 @@ function App() {
           {inputs.map((input)=>(
             <FormInput 
             key={input.id} {...input} 
-            value={user[input.userName]}
+            value={newUser[input.userName]}
             onChange={onChange}
             />
           ))}
