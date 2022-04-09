@@ -19,8 +19,8 @@ function App() {
       placeholder:"user name",
       errorMessage:"User name should be 12-22 characters and shouldn't be include any special character!",
       label:"User Name",
-      pattern:"^[A-Za-z0-9]{4,16}$", // regular expression.
-      required:false
+      pattern:"^[A-Za-z0-9]{4,16}$", // regular expression.     ^[A-Za-z0-9]{4,16}$
+      required:true
     },
     {
       id:2,
@@ -29,7 +29,7 @@ function App() {
       placeholder:"user Email", 
       errorMessage:"It should be valid email address!",
       label:"Email",
-      required:false
+      required:true
     },
     {
       id:3,
@@ -37,7 +37,7 @@ function App() {
       type:"date",
       placeholder:"Birthday",
       label:"Birthday",
-      required:false
+      required:true
     },
     {
       id:4,
@@ -47,7 +47,7 @@ function App() {
       errorMessage:"Password should be 8-20 characters and include at lest 1 latter, 1 number, 1 special character!",
       pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}`, // regex for password validation.
       label:"Password",
-      required:false
+      required:true
     },
     {
       id:5,
@@ -57,7 +57,7 @@ function App() {
       errorMessage:"Passwords don't match",
       pattern:newUser.Password,
       label:"Confirm Password",
-      required:false
+      required:true
     }
   ]
 
