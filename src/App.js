@@ -1,13 +1,13 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Form from './Components/Form';
 import FormInput from './Components/FormInput';
 
 function App() {
   const [newUser,setNewUser] = useState({
-    userName:"",
-    Email:"",
-    Password:"",
+    username:"",
+    email:"",
+    password:"",
     confirmPassword:""
   });
 
@@ -45,7 +45,7 @@ function App() {
       type:"password",
       placeholder:"Password",
       errorMessage:"Password should be 8-20 characters and include at lest 1 latter, 1 number, 1 special character!",
-      pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}`, // regex for password validation.
+      pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}`, // regex for password validation. password should be at lest 1 number, 1 letter, 1 special character.
       label:"Password",
       required:true
     },
@@ -55,15 +55,11 @@ function App() {
       type:"password",
       placeholder:"Confirm Password",
       errorMessage:"Passwords don't match",
-      pattern:newUser.Password,
+      pattern:`${newUser.password}`,
       label:"Confirm Password",
       required:true
     }
   ]
-
-  console.log("re-rendered")
-  const userNameRef = useRef()
-  
 
   const handleSubmit =(e)=>{
     const data = new FormData(e.target);
@@ -72,10 +68,9 @@ function App() {
   }
 
   const onChange =(e)=>{
+    
     setNewUser({...newUser,[e.target.name]:e.target.value})
   }
-
-  console.log(newUser)
 
   return (
     <div className="App">
@@ -83,8 +78,9 @@ function App() {
          <h1> Register </h1>
           {inputs.map((input)=>(
             <FormInput 
-            key={input.id} {...input} 
-            value={newUser[input.userName]}
+            key={input.id}
+            {...input} 
+            value={newUser[input.name]}
             onChange={onChange}
             />
           ))}
